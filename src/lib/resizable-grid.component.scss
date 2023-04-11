@@ -1,9 +1,9 @@
 .containerr {
-	// display: flex;
+	display: flex;
 
 	/* Misc */
-	border: 1px solid #cbd5e0;
-	height: 32rem;
+	border: 1px solid lime;
+	height: 100%;
 	width: 100%;
 	.containerr {
 		height: 100%;
@@ -53,15 +53,21 @@
 }
 
 :host {
+	display: block;
 	&[data-direction='horizontal'] {
 		height: 100%;
-		display: block;
 		overflow: hidden;
-		.containerr {
+		> .containerr {
 			display: flex;
-			::ng-deep * {
-				// display: inline-block !important;
-			}
+		}
+	}
+	&[data-direction='vertical'] {
+		height: 100%;
+
+		> .containerr {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
 		}
 	}
 	// [data-direction='vertical'] {

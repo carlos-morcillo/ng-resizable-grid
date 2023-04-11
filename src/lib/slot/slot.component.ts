@@ -24,13 +24,18 @@ export class SlotComponent implements OnInit {
 
 	@HostBinding('style')
 	get style() {
+		const { height, width } =
+			this._parent.elementRef.nativeElement.getBoundingClientRect();
+		console.log(
+			this._parent.direction,
+			height,
+			width,
+			this._parent.size,
+			this.size
+		);
 		if (this._parent.direction === 'horizontal') {
 			return {
-				width:
-					(this._parent.elementRef.nativeElement.getBoundingClientRect().width /
-						this._parent.size) *
-						this.size +
-					'px'
+				width: (width / this._parent.size) * this.size + 'px'
 			};
 		} else {
 			return {

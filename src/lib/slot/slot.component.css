@@ -2,4 +2,9 @@
 	display: block;
 	width: 100%;
 	min-height: 40px;
+	-webkit-transition: all 128ms ease-in;
+-moz-transition: all 128ms ease-in;
+-ms-transition: all 128ms ease-in;
+-o-transition: all 128ms ease-in;
+transition: all 128ms ease-in;
 }
