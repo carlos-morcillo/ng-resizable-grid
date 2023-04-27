@@ -2,6 +2,7 @@ import {
 	Component,
 	ElementRef,
 	HostBinding,
+	HostListener,
 	Input,
 	OnInit
 } from '@angular/core';
@@ -22,33 +23,20 @@ export class SlotComponent implements OnInit {
 
 	ngOnInit(): void {}
 
+	@HostListener('window:resize', ['$event'])
 	@HostBinding('style')
 	get style() {
 		const { height, width } =
 			this._parent.elementRef.nativeElement.getBoundingClientRect();
-		console.log(
-			this._parent.direction,
-			height,
-			width,
-			this._parent.size,
-			this.size
-		);
+
 		if (this._parent.direction === 'horizontal') {
 			return {
 				width: (width / this._parent.size) * this.size + 'px'
 			};
 		} else {
 			return {
-				height:
-					(this._parent.elementRef.nativeElement.getBoundingClientRect()
-						.height /
-						this._parent.size) *
-						this.size +
-					'px'
+				height: (height / this._parent.size) * this.size + 'px'
 			};
 		}
-		return (
-			(this._parent.elementRef.nativeElement.offsetHeight / 12) * this.size
-		);
 	}
 }
